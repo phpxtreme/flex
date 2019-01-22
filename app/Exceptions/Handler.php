@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -49,6 +51,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($request->ajax()) {
+            return parent::render($request, $exception);
+        } else {
+            switch (true) {
+                case $exception instanceof NotFoundHttpException:
+                    return redirect(route('wrapper'));
+                case $exception instanceof MethodNotAllowedHttpException:
+                    return redirect(route('wrapper'));
+                default:
+                    return parent(render($request, $exception));
+            }
+        }
     }
 }
