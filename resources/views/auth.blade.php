@@ -39,7 +39,7 @@
                 </div>
                 <div class="mt-2" align="center">
                     <a class="text-white" href="http://www.flex.co.cu">
-                        Copyright © Flex
+                        Copyright © Flex Company
                     </a>
                 </div>
             </div>
