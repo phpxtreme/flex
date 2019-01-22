@@ -38,8 +38,8 @@
                     </div>
                 </div>
                 <div class="mt-2" align="center">
-                    <a class="text-white" href="http://www.flex.co.cu">
-                        Copyright © Flex
+                    <a class="text-white" href="http://www.example.com">
+                        Copyright © Flex Company
                     </a>
                 </div>
             </div>
