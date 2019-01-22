@@ -1,0 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background: radial-gradient(ellipse at center, #34679a 0%, #214163 47%, #0d1926 100%);
+
+  input:required {
+    box-shadow: none;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+  }
+}

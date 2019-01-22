@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return !Auth::check() ? view('auth.login') : view('app.home');
+    return !Auth::check() ? view('auth') : view('app');
 })->name('wrapper');

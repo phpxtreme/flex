@@ -11,5 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.combine([
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/jquery-ui-dist/jquery-ui.js',
+    'resources/assets/auth/auth.js',
+], 'public/js/auth.js')
+    .sass('resources/assets/app/app.scss', 'public/css')
+    .sass('resources/assets/auth/auth.scss', 'public/css');
