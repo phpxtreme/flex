@@ -11,6 +11,13 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
+/*
+|--------------------------------------------------------------------------
+| Application wrapper
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
-    return 'Hello World!';
-});
+    return !Auth::check() ? view('auth.login') : view('app.home');
+})->name('wrapper');
