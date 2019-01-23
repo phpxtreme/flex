@@ -69,7 +69,7 @@ class MakeRepository extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/Stubs/Repository.stub';
+        return __DIR__ . '/Stubs/Repository/Repository.stub';
     }
 
     /**

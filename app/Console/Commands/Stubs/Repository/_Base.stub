@@ -1,0 +1,8 @@
+<?php
+
+namespace Modules\DummyModule\Repositories;
+
+abstract class _Base
+{
+    // TODO: Abstracts methods that must implements
+}
