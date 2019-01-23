@@ -2,7 +2,7 @@
 
 namespace Modules\DummyModule\Repositories;
 
-class DummyRepository extends BaseRepository implements RepositoryInterface
+class DummyRepository extends _Base implements _Interface
 {
     /**
      * Select DummyEntity
