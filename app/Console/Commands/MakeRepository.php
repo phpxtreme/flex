@@ -94,7 +94,7 @@ class MakeRepository extends GeneratorCommand
         //TODO: This!
 
         /** @var array $entities */
-        $entities = [1, 2, 3];
+        $entities = ['User'];
 
         return $entities;
     }
@@ -120,6 +120,30 @@ class MakeRepository extends GeneratorCommand
     protected function replaceClass($stub, $name)
     {
         return parent::replaceClass($stub, $name);
+    }
+
+    /**
+     * Build the class with the given name.
+     *
+     * @param  string $name
+     *
+     * @return string
+     */
+    protected function buildClass($name)
+    {
+        return str_replace(
+            [
+                'DummyEntity',
+                'DummyModule',
+                'DummyRepository',
+            ],
+            [
+                $this->data['entity'],
+                $this->data['module'],
+                $this->data['entity'] . 'Repository'
+            ],
+            parent::buildClass($name)
+        );
     }
 
     /**
