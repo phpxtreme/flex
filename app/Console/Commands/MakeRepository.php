@@ -9,11 +9,6 @@ use Nwidart\Modules\Support\Config\GenerateConfigReader;
 class MakeRepository extends GeneratorCommand
 {
     /**
-     * TODO: 2- Check if _Base and _Interface Exists
-     * TODO: 3- otherwise create with stubs files
-     */
-
-    /**
      * Store information.
      *
      * @var array
@@ -59,11 +54,16 @@ class MakeRepository extends GeneratorCommand
 
         $this->data['entity'] = $entity;
 
+        // Check if parents class exists inside repository directory
+        $this->buildParent(['_Base', '_Interface']);
+
+        // Check if the repository already exists
         if ($this->alreadyExists($this->getNameInput())) {
             $this->error($this->type . ' already exists!');
 
             return false;
         }
+
 
         /** @var string $name */
         $name = $this->qualifyClass($this->getNameInput());
@@ -168,6 +168,24 @@ class MakeRepository extends GeneratorCommand
             ],
             parent::buildClass($name)
         );
+    }
+
+    /**
+     * Check if parents class exists inside repository directory
+     *
+     * @param array $array
+     */
+    protected function buildParent($array)
+    {
+        foreach ($array as $class) {
+            if (!File::exists($this->data['modulePath'] . '/Repositories/' . $class . '.php')) {
+                file_put_contents($this->data['modulePath'] . '/Repositories/' . $class . '.php', str_replace(
+                    ['DummyModule'],
+                    [$this->data['module']],
+                    file_get_contents(__DIR__ . '/Stubs/Repository/' . $class . '.stub')
+                ));
+            }
+        }
     }
 
     /**
