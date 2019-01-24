@@ -1,5 +1,7 @@
 <?php
 
+namespace Modules\Sistema\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Modules\Sistema\Entities\Role;
 
