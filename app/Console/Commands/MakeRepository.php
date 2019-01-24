@@ -3,18 +3,18 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Facades\File;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 
 class MakeRepository extends GeneratorCommand
 {
     /**
-     * TODO: 1- Get Module Entities!
-     * TODO: 2- Check if _Base and Interface Exists
+     * TODO: 2- Check if _Base and _Interface Exists
      * TODO: 3- otherwise create with stubs files
      */
 
     /**
-     * Store input information.
+     * Store information.
      *
      * @var array
      */
@@ -44,20 +44,24 @@ class MakeRepository extends GeneratorCommand
     /**
      * Execute the console command.
      *
-     * @return bool|null|void
+     * @return bool|null
      */
     public function handle()
     {
         $module = $this->choice('In which module will the repository be generated?', $this->getModules());
-        $entity = $this->choice('For what entity will the repository be generated?', $this->getEntities());
 
         $this->data = [
-            'module' => $module,
-            'entity' => $entity
+            'module'     => $module,
+            'modulePath' => $this->laravel['modules']->getModulePath($module)
         ];
+
+        $entity = $this->choice('For what entity will the repository be generated?', $this->getEntities());
+
+        $this->data['entity'] = $entity;
 
         if ($this->alreadyExists($this->getNameInput())) {
             $this->error($this->type . ' already exists!');
+
             return false;
         }
 
@@ -95,10 +99,26 @@ class MakeRepository extends GeneratorCommand
         return $modules;
     }
 
+    /**
+     * Return module entities
+     *
+     * @return array
+     */
     protected function getEntities()
     {
         /** @var array $entities */
-        $entities = ['User'];
+        $entities = [];
+
+        /** @var File $allFiles */
+        $allFiles = File::glob($this->data['modulePath'] . '/Entities/*.php');
+
+        foreach ($allFiles as $entity) {
+            $entities[] = pathinfo($entity, PATHINFO_FILENAME);
+        }
+
+        if (sizeof($entities) == 0) {
+            die($this->error('The selected module does not contain entities. Exiting...'));
+        }
 
         return $entities;
     }
@@ -159,9 +179,11 @@ class MakeRepository extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $repository     = GenerateConfigReader::read('repository');
-        $modulePath     = $this->laravel['modules']->getModulePath($this->data['module']);
-        $repositoryPath = $modulePath . $repository->getPath() . '/' . studly_case($this->data['entity']) . 'Repository.php';
+        $modulePath = $this->data['modulePath'];
+        $repository = GenerateConfigReader::read('repository');
+
+        $repositoryPath = $modulePath . $repository->getPath() . '/';
+        $repositoryPath .= studly_case($this->data['entity']) . 'Repository.php';
 
         return $repositoryPath;
     }
