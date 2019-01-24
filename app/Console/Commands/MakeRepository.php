@@ -8,7 +8,13 @@ use Nwidart\Modules\Support\Config\GenerateConfigReader;
 class MakeRepository extends GeneratorCommand
 {
     /**
-     * Store input information
+     * TODO: 1- Get Module Entities!
+     * TODO: 2- Check if _Base and Interface Exists
+     * TODO: 3- otherwise create with stubs files
+     */
+
+    /**
+     * Store input information.
      *
      * @var array
      */
@@ -91,8 +97,6 @@ class MakeRepository extends GeneratorCommand
 
     protected function getEntities()
     {
-        //TODO: This!
-
         /** @var array $entities */
         $entities = ['User'];
 
@@ -155,9 +159,10 @@ class MakeRepository extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $repository = GenerateConfigReader::read('repository');
-        $modulePath = $this->laravel['modules']->getModulePath($this->data['module']);
+        $repository     = GenerateConfigReader::read('repository');
+        $modulePath     = $this->laravel['modules']->getModulePath($this->data['module']);
+        $repositoryPath = $modulePath . $repository->getPath() . '/' . studly_case($this->data['entity']) . 'Repository.php';
 
-        return $modulePath . $repository->getPath() . '/' . studly_case($this->data['entity']) . 'Repository.php';
+        return $repositoryPath;
     }
 }
