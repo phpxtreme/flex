@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     form.submit(function (events) {
-        $.post('login', form.serialize())
+        $.post('sistema/login', form.serialize())
             .done(function (data) {
                 window.location.reload();
             })

@@ -10,6 +10,10 @@
   font-weight: bold;
 }
 
+.logout {
+  background-image: url(/images/2.png?d4bd762e5bbfc7106d4ec2118beab415) !important;
+}
+
 #app-header {
   border-bottom: 1px solid #1F4D78;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#1F4D78), to(#1862A7));
@@ -91,9 +95,5 @@
 
 #navigator .x-view-item-focused {
   outline: 1px solid #1a4d8f !important;
-}
-
-.logout {
-  background-image: url(/images/2.png?d4bd762e5bbfc7106d4ec2118beab415) !important;
 }
 
