@@ -21,3 +21,21 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return !Auth::check() ? view('auth') : view('app');
 })->name('wrapper');
+
+/*
+|--------------------------------------------------------------------------
+| Routes for unauthenticated users
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'guest'], function () {
+    Route::post('login', 'Auth\AuthController@login');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Routes for authenticated users
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('logout', 'Auth\AuthController@logout');
+});

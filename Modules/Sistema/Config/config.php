@@ -5,7 +5,6 @@ return [
 
     'init' => [
 
-        // Roles
         'roles' => [
             [
                 'name'   => 'Admin',
@@ -17,7 +16,6 @@ return [
             ]
         ],
 
-        // Users
         'users' => [
             [
                 'email'      => 'admin@example.com',

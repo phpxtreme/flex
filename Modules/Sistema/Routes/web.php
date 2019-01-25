@@ -12,5 +12,5 @@
 */
 
 Route::prefix('sistema')->group(function () {
-    Route::post('login', 'AuthController@login');
+    // TODO: This!
 });
