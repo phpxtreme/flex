@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run(UserRepository $userRepository)
     {
-        $users = config('init.users');
+        $users = config('sistema.init.users');
 
         array_map(function ($array) use ($userRepository) {
             /** @var integer $role */

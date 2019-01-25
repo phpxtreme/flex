@@ -15,7 +15,7 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         /** @var array $roles */
-        $roles = [];
+        $roles = config('sistema.init.roles');
 
         array_map(function ($role) {
             Role::create([
