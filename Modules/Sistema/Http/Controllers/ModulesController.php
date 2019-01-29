@@ -30,4 +30,9 @@ class ModulesController extends Controller
                 ->get();
         }
     }
+
+    public function controllers(Request $request)
+    {
+        
+    }
 }
