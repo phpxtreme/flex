@@ -5,7 +5,7 @@ Ext.define('app.view.Viewport.template.Navigator', {
             '<tpl for=".">',
                 '<div class="thumb-wrap">',
                     '<div class="thumb">',
-                        '<img src="images/{thumb}" />',
+                        '<img src="app/modules/{name}/resource/{thumb}" />',
                     '</div>',
                     '<span>{name}</span>',
                 '</div>',

@@ -12,9 +12,15 @@ Ext.define('app.view.Viewport.Navigator', {
             fields: ['name', 'thumb', 'url', 'type'],
             proxy: {
                 type: 'ajax',
-                url: 'modulos/get',
+                url: 'sistema/modules/read',
                 reader: {
-                    type: 'json'
+                    type: 'json',
+                },
+                actionMethods: {
+                    read: 'POST'
+                },
+                extraParams: {
+                    region: 1
                 }
             }
         });

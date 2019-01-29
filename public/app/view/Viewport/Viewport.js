@@ -20,7 +20,7 @@ Ext.define('app.view.Viewport.Viewport', {
             }, {
                 xtype: 'component',
                 id: 'app-header-title',
-                html: 'Embarques',
+                html: 'Flex',
                 flex: 1
             }, {
                 xtype: 'button',

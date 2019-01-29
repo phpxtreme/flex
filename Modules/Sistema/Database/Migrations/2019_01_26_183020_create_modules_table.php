@@ -32,16 +32,19 @@ class CreateModulesTable extends Migration
                 ->nullable(true);
 
             $table->string('thumb')
-                ->default('default')
+                ->default('icon.png')
                 ->nullable(false);
 
             $table->string('url')
-                ->default('Default.Default')
                 ->nullable(false)
                 ->unique();
 
             $table->string('type')
                 ->default('Application')
+                ->nullable(false);
+
+            $table->integer('region')
+                ->default(1)
                 ->nullable(false);
 
             $table->boolean('active')
