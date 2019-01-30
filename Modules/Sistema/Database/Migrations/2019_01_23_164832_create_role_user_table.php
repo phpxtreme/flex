@@ -29,10 +29,9 @@ class CreateRoleUserTable extends Migration
 
             $table->integer('user_id')
                 ->nullable(false);
-            
+
             $table->timestamps();
-
-
+            
             $table->foreign('role_id')
                 ->references('id')->on('roles')
                 ->onDelete('cascade');
