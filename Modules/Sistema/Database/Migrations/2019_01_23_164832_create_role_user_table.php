@@ -11,7 +11,7 @@ class CreateRoleUserTable extends Migration
      *
      * @var string
      */
-    private $table = 'role_user';
+    private $table = 'pivot_role_user';
 
     /**
      * Run the migrations.
@@ -21,12 +21,17 @@ class CreateRoleUserTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
+
             $table->increments('id');
 
-            $table->integer('role_id');
+            $table->integer('role_id')
+                ->nullable(false);
 
-            $table->integer('user_id');
+            $table->integer('user_id')
+                ->nullable(false);
+            
             $table->timestamps();
+
 
             $table->foreign('role_id')
                 ->references('id')->on('roles')
