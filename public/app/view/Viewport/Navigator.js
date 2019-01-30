@@ -20,7 +20,10 @@ Ext.define('app.view.Viewport.Navigator', {
                     read: 'POST'
                 },
                 extraParams: {
-                    region: 1
+                    filter: Ext.encode({
+                        region: 1,
+                        active: true
+                    })
                 }
             }
         });

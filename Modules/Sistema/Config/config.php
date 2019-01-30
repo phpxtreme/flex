@@ -4,7 +4,7 @@ return [
     'name' => 'Sistema',
 
     'init' => [
-
+        // Roles
         'roles' => [
             [
                 'name'   => 'Admin',
@@ -15,7 +15,7 @@ return [
                 'active' => true
             ]
         ],
-
+        // Users
         'users' => [
             [
                 'email'      => 'admin@example.com',
