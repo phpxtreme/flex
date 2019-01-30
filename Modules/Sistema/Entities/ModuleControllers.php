@@ -4,14 +4,14 @@ namespace Modules\Sistema\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Module extends Model
+class ModuleControllers extends Model
 {
     /**
-     * Modules Table
+     * Modules Controllers Table
      *
      * @var string
      */
-    protected $table = 'modules';
+    protected $table = 'pivot_module_controllers';
 
     /**
      * The attributes that aren't mass assignable.

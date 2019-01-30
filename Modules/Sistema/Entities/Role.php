@@ -14,6 +14,15 @@ class Role extends Model
     protected $table = 'roles';
 
     /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id'
+    ];
+
+    /**
      * Relation: Many to Many [Roles and Users]
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

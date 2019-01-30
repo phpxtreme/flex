@@ -12,12 +12,15 @@ class UsersTableSeeder extends Seeder
      * Run the database seeds.
      *
      * @param UserRepository $userRepository
+     *
+     * @return void
      */
     public function run(UserRepository $userRepository)
     {
         $users = config('sistema.init.users');
 
         array_map(function ($array) use ($userRepository) {
+
             /** @var integer $role */
             $role = $array['role_id'];
 

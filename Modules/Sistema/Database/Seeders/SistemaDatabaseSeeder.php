@@ -18,7 +18,8 @@ class SistemaDatabaseSeeder extends Seeder
 
         $this->call([
             RolesTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            ModulesTableSeeder::class
         ]);
     }
 }

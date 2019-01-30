@@ -11,7 +11,7 @@ class RoleUser extends Model
      *
      * @var string
      */
-    protected $table = 'role_user';
+    protected $table = 'pivot_role_user';
 
     /**
      * The attributes that aren't mass assignable.
