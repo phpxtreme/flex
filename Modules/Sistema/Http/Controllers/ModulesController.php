@@ -9,7 +9,7 @@ use Modules\Sistema\Repositories\ModuleRepository;
 class ModulesController extends Controller
 {
     /**
-     * Read all modules
+     * Read Modules
      *
      * @param Request $request
      *
@@ -17,22 +17,19 @@ class ModulesController extends Controller
      */
     public function read(Request $request)
     {
-        $repository   = new ModuleRepository();
-        $moduleRegion = $request->only('region');
+        /** @var ModuleRepository $repository */
+        $repository = new ModuleRepository();
 
-        if ($moduleRegion) {
-            return $repository->select(['region' => $moduleRegion])
-                ->orderBy('id', 'ASC')
-                ->get();
-        } else {
+        if (!$request->get('filter')) {
             return $repository->select()
                 ->orderBy('id', 'ASC')
+                ->with(['controllers'])
+                ->get();
+        } else {
+            return $repository->select(json_decode($request->get('filter')))
+                ->orderBy('id', 'ASC')
+                ->with(['controllers'])
                 ->get();
         }
-    }
-
-    public function controllers(Request $request)
-    {
-        
     }
 }

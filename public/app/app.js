@@ -17,11 +17,25 @@ Ext.Ajax.on({
     }
 });
 
-Ext.application({
-    name: "app",
-    appFolder: "app",
+Ext.Ajax.request({
+    method: 'POST',
+    url: "sistema/modules/read",
+    success: function (a, c) {
 
-    // Controllers
-    controllers: ['app.controller.Viewport.Viewport'],
-    mainView: "Viewport.Viewport",
+        // var b = Ext.decode(a.responseText),
+        //     d = [];
+        //
+        // for (i = 0; i < b.length; i++) {
+        //     d.push(b[i].controller)
+        // }
+
+        Ext.application({
+            name: "app",
+            appFolder: "app",
+
+            // Controllers
+            controllers: ['app.controller.Viewport.Viewport'],
+            mainView: "Viewport.Viewport",
+        });
+    }
 });
