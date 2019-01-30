@@ -11,7 +11,7 @@ class CreateModuleControllersTable extends Migration
      *
      * @var string
      */
-    private $table = 'pivot_module_controllers';
+    private $table = 'module_controllers';
 
     /**
      * Run the migrations.

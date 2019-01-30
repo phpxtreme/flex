@@ -11,7 +11,7 @@ class ModuleControllers extends Model
      *
      * @var string
      */
-    protected $table = 'pivot_module_controllers';
+    protected $table = 'module_controllers';
 
     /**
      * The attributes that aren't mass assignable.
