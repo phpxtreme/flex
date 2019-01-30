@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateControllersTable extends Migration
+class CreateModuleControllersTable extends Migration
 {
     /**
      * Controllers Table
      *
      * @var string
      */
-    private $table = 'controllers';
+    private $table = 'pivot_module_controllers';
 
     /**
      * Run the migrations.
@@ -26,7 +26,7 @@ class CreateControllersTable extends Migration
             $table->integer('module_id')
                 ->nullable(false);
 
-            $table->string('controller_path')
+            $table->string('path')
                 ->nullable(false);
 
             $table->timestamps();
