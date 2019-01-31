@@ -21,4 +21,14 @@ class Module extends Model
     protected $guarded = [
         'id'
     ];
+
+    /**
+     * Relation: One to Many [Modules and Controllers]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function controllers()
+    {
+        return $this->hasMany(ModuleControllers::class);
+    }
 }

@@ -11,7 +11,7 @@ class ModuleRole extends Model
      *
      * @var string
      */
-    protected $table = 'pivot_module_role';
+    protected $table = 'module_role';
 
     /**
      * The attributes that aren't mass assignable.

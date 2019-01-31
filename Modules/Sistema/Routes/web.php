@@ -14,5 +14,5 @@
 Route::prefix('sistema')->group(function () {
 
     // Modules
-    Route::post('modules/read', 'ModulesController@read');
+    Route::post('modules/load', 'ModulesController@load');
 });

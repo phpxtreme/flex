@@ -1,4 +1,5 @@
 Ext.ariaWarn = Ext.emptyFn;
+
 Ext.Loader.setConfig({
     enabled: !0,
     paths: {
@@ -19,7 +20,7 @@ Ext.Ajax.on({
 
 Ext.Ajax.request({
     method: 'POST',
-    url: "sistema/modules/read",
+    url: "sistema/modules/load",
     success: function (response, opts) {
         // TODO: This!
     }

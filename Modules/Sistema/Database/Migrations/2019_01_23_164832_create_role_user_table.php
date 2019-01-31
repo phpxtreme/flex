@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Schema;
 class CreateRoleUserTable extends Migration
 {
     /**
-     * Role User Pivot Table
+     * Role User Table
      *
      * @var string
      */
-    private $table = 'pivot_role_user';
+    private $table = 'role_user';
 
     /**
      * Run the migrations.
@@ -31,7 +31,7 @@ class CreateRoleUserTable extends Migration
                 ->nullable(false);
 
             $table->timestamps();
-            
+
             $table->foreign('role_id')
                 ->references('id')->on('roles')
                 ->onDelete('cascade');

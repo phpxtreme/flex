@@ -7,14 +7,7 @@ use Illuminate\Routing\Controller;
 
 class ModulesController extends Controller
 {
-    /**
-     * Read Modules
-     *
-     * @param Request $request
-     *
-     * @return mixed
-     */
-    public function read(Request $request)
+    public function load(Request $request)
     {
 
     }

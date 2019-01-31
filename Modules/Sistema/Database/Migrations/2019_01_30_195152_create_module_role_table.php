@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateModuleRoleTable extends Migration
 {
-    private $table = 'pivot_module_role';
+    private $table = 'module_role';
 
     /**
      * Run the migrations.

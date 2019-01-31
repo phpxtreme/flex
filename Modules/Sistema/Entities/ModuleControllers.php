@@ -21,4 +21,14 @@ class ModuleControllers extends Model
     protected $guarded = [
         'id'
     ];
+
+    /**
+     * Relation: One to Many (Inverse) [Controllers and Modules]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function module()
+    {
+        return $this->belongsTo(Module::class);
+    }
 }
