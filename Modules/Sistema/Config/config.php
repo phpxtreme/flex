@@ -13,6 +13,10 @@ return [
             [
                 'name'   => 'User',
                 'active' => true
+            ],
+            [
+                'name'   => 'Guest',
+                'active' => true
             ]
         ],
         // Users
@@ -22,7 +26,7 @@ return [
                 'password'   => 'ascent',
                 'first_name' => 'Administrator',
                 'last_name'  => 'Administrator',
-                'role_id'    => 1,
+                'roles'      => [1, 2],
                 'active'     => true
             ],
             [
@@ -30,7 +34,7 @@ return [
                 'password'   => 'ascent',
                 'first_name' => 'User',
                 'last_name'  => 'User',
-                'role_id'    => 2,
+                'roles'      => [2],
                 'active'     => true
             ]
         ],
@@ -40,7 +44,7 @@ return [
                 'name'        => 'Inicio',
                 'description' => 'Inicio',
                 'url'         => 'mod.Inicio.view.Inicio',
-                'roles'       => [1],
+                'roles'       => [1, 2, 3],
                 'controllers' => [
                     'mod.Inicio.controller.Inicio'
                 ]

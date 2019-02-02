@@ -21,6 +21,8 @@ class CreateModuleControllersTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
+
+            // Columns
             $table->increments('id');
 
             $table->integer('module_id')
@@ -31,6 +33,7 @@ class CreateModuleControllersTable extends Migration
 
             $table->timestamps();
 
+            // Relationships
             $table->foreign('module_id')
                 ->references('id')->on('modules')
                 ->onDelete('cascade');

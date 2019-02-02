@@ -17,22 +17,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run(UserRepository $userRepository)
     {
+        /** @var array $users */
         $users = config('sistema.init.users');
 
         array_map(function ($array) use ($userRepository) {
 
-            /** @var integer $role */
-            $role = $array['role_id'];
+            /** @var array $role */
+            $roles = $array['roles'];
 
-            // Remove the role from the array
-            unset($array['role_id']);
+            // Remove elements from the array
+            unset($array['roles']);
 
             $user = $userRepository->create($array, true);
 
-            RoleUser::create([
-                'role_id' => $role,
-                'user_id' => $user->id
-            ]);
+            // Associate Roles
+            foreach ($roles as $role) {
+                RoleUser::create([
+                    'role_id' => $role,
+                    'user_id' => $user->id
+                ]);
+            }
         }, $users);
     }
 }

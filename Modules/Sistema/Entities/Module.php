@@ -23,6 +23,16 @@ class Module extends Model
     ];
 
     /**
+     * Relation: Many to Many [Modules and Roles]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /**
      * Relation: One to Many [Modules and Controllers]
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

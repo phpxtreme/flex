@@ -16,6 +16,8 @@ class CreateModuleRoleTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
+
+            // Columns
             $table->increments('id');
 
             $table->integer('role_id')
@@ -26,6 +28,7 @@ class CreateModuleRoleTable extends Migration
 
             $table->timestamps();
 
+            // Relationships
             $table->foreign('role_id')
                 ->references('id')->on('roles')
                 ->onDelete('cascade');

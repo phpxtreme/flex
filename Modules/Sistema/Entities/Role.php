@@ -31,4 +31,14 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Relation: Many to Many [Roles and Modules]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function modules()
+    {
+        return $this->belongsToMany(Module::class);
+    }
 }
