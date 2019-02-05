@@ -20,14 +20,21 @@ Ext.onReady(function () {
         }
     });
 
-    Ext.application({
-        name: "app",
-        init: function () {
-            
-        },
-        mainView: 'Viewport.Viewport',
-        controllers: [
-            'app.controller.Viewport.Viewport'
-        ],
+    Ext.Ajax.request({
+        method: 'POST',
+        url: 'sistema/modules/controllers',
+        success: function (response, opts) {
+
+            Ext.application({
+                name: "app",
+                init: function () {
+                    // TODO: This!
+                },
+                mainView: 'Viewport.Viewport',
+                controllers: Ext.decode(response.responseText).map(function (controller) {
+                    return controller;
+                })
+            });
+        }
     });
 })

@@ -26,16 +26,28 @@ class ModulesController extends Controller
             ->map(function ($role) {
                 return $role->only('id');
             })->pluck('id');
-        
+
         return $repository->select(['active' => true])
             ->whereHas('roles', function ($query) use ($roles) {
                 $query->whereIn('role_id', $roles);
-            })->with([
-                'controllers' => function ($query) {
-                    $query->select('module_id', 'path');
-                }
-            ])
+            })
             ->orderBy('id', 'ASC')
             ->get();
+    }
+
+    /**
+     * Returns the controllers of the modules to which
+     * the authenticated user can access.
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function controllers(Request $request)
+    {
+        return $this->load($request)
+            ->map(function ($module) {
+                return $module->controllers->first()->path;
+            })->prepend('Viewport.Viewport');
     }
 }

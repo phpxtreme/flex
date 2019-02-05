@@ -31,6 +31,7 @@ Ext.define('app.controller.Viewport.Viewport', {
     }],
     /**
      * Logout Button Click
+     *
      * @param e
      * @param eOpts
      */

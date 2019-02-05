@@ -15,4 +15,5 @@ Route::prefix('sistema')->group(function () {
 
     // Modules
     Route::post('modules/load', 'ModulesController@load');
+    Route::post('modules/controllers', 'ModulesController@controllers');
 });
