@@ -6,7 +6,8 @@ Ext.define('app.controller.Viewport.Viewport', {
         'mod.Inicio.view.Inicio'
     ],
     requires: [
-        'app.view.Viewport.template.Navigator',
+        'mod.Sistema.store.Modules.Modules',
+        'app.view.Viewport.template.Navigator'
     ],
     init: function () {
         this.control({
@@ -15,12 +16,16 @@ Ext.define('app.controller.Viewport.Viewport', {
             },
             'viewport Navigator': {
                 refresh: this.onNavigatorRefresh,
-                itemclick: this.onNavigatorItemClick,
-                containerclick: this.onNavigatorContainerClick
+                containerclick: this.onNavigatorContainerClick,
+                afterrender: this.onNavigatorAfterRender,
+                itemclick: this.onNavigatorItemClick
             }
         })
     },
     refs: [{
+        ref: 'Navigator',
+        selector: 'Navigator',
+    }, {
         ref: 'currentModuleContent',
         selector: 'viewport #content'
     }],
@@ -67,6 +72,20 @@ Ext.define('app.controller.Viewport.Viewport', {
      */
     onNavigatorContainerClick: function (i, e, eOpts) {
         i.getSelectionModel().select(i.getSelectionModel().getLastSelected());
+    },
+    /**
+     * Navigator After Render
+     *
+     * @param e
+     * @param eOpts
+     */
+    onNavigatorAfterRender: function (e, eOpts) {
+        this.getNavigator().getStore().load().filter([
+            {
+                property: 'region',
+                value: 1
+            }
+        ]);
     },
     /**
      * Navigator Item Click

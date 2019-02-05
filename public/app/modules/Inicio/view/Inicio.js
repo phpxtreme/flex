@@ -21,7 +21,7 @@ Ext.define('mod.Inicio.view.Inicio', {
         }, {
             xtype: 'panel',
             region: 'south',
-            title: '1-1',
+            title: 'Módulos',
             flex: 1
         }]
     }]

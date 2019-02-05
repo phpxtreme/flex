@@ -26,11 +26,15 @@ class ModulesController extends Controller
             ->map(function ($role) {
                 return $role->only('id');
             })->pluck('id');
-
+        
         return $repository->select(['active' => true])
             ->whereHas('roles', function ($query) use ($roles) {
                 $query->whereIn('role_id', $roles);
-            })->with('controllers')
+            })->with([
+                'controllers' => function ($query) {
+                    $query->select('module_id', 'path');
+                }
+            ])
             ->orderBy('id', 'ASC')
             ->get();
     }

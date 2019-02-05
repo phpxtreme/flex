@@ -19,8 +19,9 @@ class RolesTableSeeder extends Seeder
 
         array_map(function ($role) {
             Role::create([
-                'name'   => $role['name'],
-                'active' => $role['active']
+                'name'        => $role['name'],
+                'description' => $role['description'],
+                'active'      => $role['active']
             ]);
         }, $roles);
     }

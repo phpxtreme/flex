@@ -1,27 +1,33 @@
-Ext.ariaWarn = Ext.emptyFn;
+Ext.onReady(function () {
 
-Ext.Loader.setConfig({
-    enabled: !0,
-    paths: {
-        app: "app",
-        mod: "app/modules"
-    }
-});
+    Ext.ariaWarn = Ext.emptyFn;
 
-Ext.Ajax.on({
-    beforerequest: function (connection, request, opts) {
-        if (request.method == 'POST') {
-            Ext.Ajax.setDefaultHeaders({
-                'X-CSRF-TOKEN': document.head.querySelector("[name=csrf-token]").content
-            });
+    Ext.Loader.setConfig({
+        enabled: !0,
+        paths: {
+            app: "app",
+            mod: "app/modules"
         }
-    }
-});
+    });
 
-Ext.Ajax.request({
-    method: 'POST',
-    url: "sistema/modules/load",
-    success: function (response, opts) {
-        
-    }
-});
+    Ext.Ajax.on({
+        beforerequest: function (connection, request, opts) {
+            if (request.method == 'POST') {
+                Ext.Ajax.setDefaultHeaders({
+                    'X-CSRF-TOKEN': document.head.querySelector("[name=csrf-token]").content
+                });
+            }
+        }
+    });
+
+    Ext.application({
+        name: "app",
+        init: function () {
+            
+        },
+        mainView: 'Viewport.Viewport',
+        controllers: [
+            'app.controller.Viewport.Viewport'
+        ],
+    });
+})

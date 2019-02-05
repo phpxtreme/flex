@@ -7,33 +7,31 @@ return [
         // Roles
         'roles'   => [
             [
-                'name'   => 'Admin',
-                'active' => true
+                'name'        => 'dev',
+                'active'      => true,
+                'description' => 'Flex Developer'
             ],
             [
-                'name'   => 'User',
-                'active' => true
-            ],
-            [
-                'name'   => 'Guest',
-                'active' => true
+                'name'        => 'admin',
+                'active'      => true,
+                'description' => 'System Administrator'
             ]
         ],
         // Users
         'users'   => [
             [
-                'email'      => 'admin@example.com',
+                'email'      => 'dev@example.com',
                 'password'   => 'ascent',
-                'first_name' => 'Administrator',
-                'last_name'  => 'Administrator',
+                'first_name' => 'Flex',
+                'last_name'  => 'Developer',
                 'roles'      => [1, 2],
                 'active'     => true
             ],
             [
-                'email'      => 'user@example.com',
+                'email'      => 'admin@example.com',
                 'password'   => 'ascent',
-                'first_name' => 'User',
-                'last_name'  => 'User',
+                'first_name' => 'Administrator',
+                'last_name'  => 'Administrator',
                 'roles'      => [2],
                 'active'     => true
             ]
@@ -44,7 +42,7 @@ return [
                 'name'        => 'Inicio',
                 'description' => 'Inicio',
                 'url'         => 'mod.Inicio.view.Inicio',
-                'roles'       => [1, 2, 3],
+                'roles'       => [1, 2],
                 'controllers' => [
                     'mod.Inicio.controller.Inicio'
                 ]
@@ -62,7 +60,7 @@ return [
                 'name'        => 'Ayuda',
                 'description' => 'Ayuda',
                 'url'         => 'mod.Ayuda.view.Ayuda',
-                'roles'       => [1, 2],
+                'roles'       => [1],
                 'controllers' => [
                     'mod.Ayuda.controller.Ayuda'
                 ]
