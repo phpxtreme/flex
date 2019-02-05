@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Nwidart\Modules\Exceptions\ModuleNotFoundException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -58,6 +59,8 @@ class Handler extends ExceptionHandler
                 case $exception instanceof NotFoundHttpException:
                     return redirect(route('wrapper'));
                 case $exception instanceof MethodNotAllowedHttpException:
+                    return redirect(route('wrapper'));
+                case $exception instanceof ModuleNotFoundException:
                     return redirect(route('wrapper'));
                 default:
                     return parent(render($request, $exception));
