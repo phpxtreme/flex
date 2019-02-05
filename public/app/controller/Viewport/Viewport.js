@@ -101,14 +101,14 @@ Ext.define('app.controller.Viewport.Viewport', {
     onNavigatorItemClick: function (view, record, item, index, e, eOpts) {
         if (!this.getCurrentModuleContent().getComponent(record.get('url'))) {
 
-            if (Ext.ClassManager.get('app.view.' + record.get('url'))) {
+            if (Ext.ClassManager.get(record.get('url'))) {
                 switch (record.get('type')) {
                     case 'Window':
                         Ext.widget(record.get('url'), {});
                         break;
                     case 'Application':
                         this.getCurrentModuleContent().removeAll();
-                        this.getCurrentModuleContent().add(Ext.create('app.view.' + record.get('url'), {}));
+                        this.getCurrentModuleContent().add(Ext.create(record.get('url'), {}));
                         break;
                     default:
                         console.log('Unknown module type: ' + record.get('type'));

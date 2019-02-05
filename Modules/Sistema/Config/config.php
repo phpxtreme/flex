@@ -7,31 +7,31 @@ return [
         // Roles
         'roles'   => [
             [
-                'name'        => 'dev',
-                'active'      => true,
-                'description' => 'Flex Developer'
-            ],
-            [
                 'name'        => 'admin',
                 'active'      => true,
-                'description' => 'System Administrator'
+                'description' => 'Admin'
+            ],
+            [
+                'name'        => 'user',
+                'active'      => true,
+                'description' => 'User'
             ]
         ],
         // Users
         'users'   => [
             [
-                'email'      => 'dev@example.com',
+                'email'      => 'admin@example.com',
                 'password'   => 'ascent',
-                'first_name' => 'Flex',
-                'last_name'  => 'Developer',
+                'first_name' => 'Admin',
+                'last_name'  => 'Admin',
                 'roles'      => [1, 2],
                 'active'     => true
             ],
             [
-                'email'      => 'admin@example.com',
+                'email'      => 'user@example.com',
                 'password'   => 'ascent',
-                'first_name' => 'Administrator',
-                'last_name'  => 'Administrator',
+                'first_name' => 'User',
+                'last_name'  => 'User',
                 'roles'      => [2],
                 'active'     => true
             ]
