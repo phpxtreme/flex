@@ -53,7 +53,8 @@ return [
                 'url'         => 'mod.Sistema.view.Sistema',
                 'roles'       => [1],
                 'controllers' => [
-                    'mod.Sistema.controller.Sistema'
+                    'mod.Sistema.controller.Sistema',
+                    'mod.Sistema.controller.Usuarios.Usuarios'
                 ]
             ],
             [

@@ -2,7 +2,6 @@
 
 namespace Modules\Sistema\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Sistema\Repositories\ModuleRepository;
@@ -10,13 +9,11 @@ use Modules\Sistema\Repositories\ModuleRepository;
 class ModulesController extends Controller
 {
     /**
-     * Load the modules for the role of the logged in user
-     *
-     * @param Request $request
+     * Load the modules to which the authenticated user's role has access.
      *
      * @return mixed
      */
-    public function load(Request $request)
+    public function modules()
     {
         /** @var ModuleRepository $repository */
         $repository = new ModuleRepository();
@@ -36,18 +33,14 @@ class ModulesController extends Controller
     }
 
     /**
-     * Returns the controllers of the modules to which
-     * the authenticated user can access.
-     *
-     * @param Request $request
+     * Returns the controllers associated with the modules to be loaded.
      *
      * @return mixed
      */
-    public function controllers(Request $request)
+    public function controllers()
     {
-        return $this->load($request)
-            ->map(function ($module) {
-                return $module->controllers->first()->path;
-            })->prepend('Viewport.Viewport');
+        return $this->modules()->map(function ($module) {
+            return $module->controllers->pluck('path');
+        })->collapse()->prepend('Viewport.Viewport');
     }
 }

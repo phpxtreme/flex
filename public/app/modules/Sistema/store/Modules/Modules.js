@@ -3,7 +3,7 @@ Ext.define('mod.Sistema.store.Modules.Modules', {
     model: 'mod.Sistema.model.Modules.Modules',
     proxy: {
         type: 'ajax',
-        url: 'sistema/modules/load',
+        url: 'sistema/modules/modules',
         reader: {
             type: 'json'
         },
